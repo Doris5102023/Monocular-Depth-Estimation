@@ -1,6 +1,10 @@
 # README: Monocular Depth Estimation
 ## 1. Overview 🧠
-This directory implements **monocular depth estimation** for Task 3, which predicts dense depth maps from single RGB images using deep learning. Built on PyTorch and evaluated on ScanNet, it supports training, inference, quantitative evaluation, visualization, and fair comparison between a baseline model and modern foundation models (DA3 / VGGT).
+This repository implements **monocular depth estimation** for Task 3, which predicts dense depth maps from single RGB images using deep learning. Built on PyTorch and evaluated on the ScanNet dataset, it supports:
+- Training a custom ResNet50 baseline model
+- Inference & quantitative evaluation (AbsRel metric)
+- Qualitative visualization of depth predictions
+- Performance comparison with VGGT/DA3 foundation models
 
 ## 2. Technical Background 📚
 Monocular depth estimation is an ill-posed computer vision task: a single 2D image does not provide explicit 3D geometry. The key ideas are:
@@ -10,22 +14,34 @@ Monocular depth estimation is an ill-posed computer vision task: a single 2D ima
 - **Loss & Metric** 📊: Trained with depth loss; evaluated by **AbsRel** (lower = better).
 
 ## 3. File Structure 📁
-| File Name | Description |
-|----------|-------------|
-| `depth_model.py` | Defines the baseline depth model (ResNet50 + decoder) |
-| `scannet_dataset.py` | ScanNet data loader, preprocessing, and masking |
-| `metrics.py` | AbsRel metric and scale-shift alignment functions |
-| `train.py` | Training pipeline with loss, optimizer, and checkpoint saving |
-| `infer.py` | Inference for single-image depth prediction |
-| `visualize.py` | Visualization and comparison for Baseline / VGGT / DA3 |
+| File Name               | Description                                                                 |
+|-------------------------|-----------------------------------------------------------------------------|
+| `depth_model.py`        | ResNet50 baseline model definition (backbone + depth regression head).      |
+| `scannet_dataset.py`    | ScanNet data loader (preprocessing + valid depth mask generation).          |
+| `metrics.py`            | AbsRel metric + scale-shift alignment functions.                           |
+| `train.py`              | Training pipeline (loss computation / optimizer / checkpoint saving).       |
+| `test.py`               | Test-time evaluation (AbsRel calculation on test set).                     |
+| `infer.py`              | Single-image depth prediction.                                              |
+| `visualize.py`          | Baseline model visualization (RGB → GT → Pred → Error).                    |
+| `visualize_compare.py`  | Side-by-side comparison (Baseline/VGGT/DA3).                                |
+| `foundation_models.py`  | Wrapper for VGGT/DA3 inference. 
 
-## 4. Usage 🚀
-### 4.1 Environment Setup
+## 4. Foundation Model Resources 🤖
+### VGGT
+- Paper: [Vision Grounded Geometry Transformer](https://arxiv.org/abs/2503.11651)
+- Model Zoo: [https://github.com/facebookresearch/vggt](https://github.com/facebookresearch/vggt)
+
+### Depth Anything 3 (DA3)
+- Paper: [Depth Anything 3: Recovering the Visual Space from Any Views](https://arxiv.org/abs/2511.10647)
+- Model Zoo: [Depth Anything 3: Recovering the Visual Space from Any Views](https://github.com/ByteDance-Seed/depth-anything-3)
+
+## 5. Usage 🚀
+### 5.1 Environment Setup
 ```bash
 pip install torch torchvision numpy matplotlib opencv-python scipy
 ```
 
-### 4.2 Model Training 🏋️‍♂️
+### 5.2 Model Training 🏋️‍♂️
 ```bash
 python train.py \
   --scannet_root /path/to/scannet \
@@ -34,7 +50,7 @@ python train.py \
   --image_size 240 320
 ```
 
-### 4.3 Inference & Visualization 🎨
+### 5.3 Inference & Visualization 🎨
 ```bash
 python visualize.py \
   --scannet_root /path/to/scannet \
@@ -42,12 +58,12 @@ python visualize.py \
   --scene_name scene0001_01
 ```
 
-## 5. Evaluation Metric 📐
+## 6. Evaluation Metric 📐
 The main metric is **Absolute Relative Error (AbsRel)**:
 $$\text{AbsRel} = \frac{1}{N}\sum\frac{|d_{pred} - d_{gt}|}{d_{gt}}$$
 Lower values indicate higher depth accuracy.
 
-## 6. Notes 💡
+## 7. Notes 💡
 - Adjust `batch_size` if you encounter GPU out-of-memory issues.
 - Set `min_depth` and `max_depth` appropriately for indoor scenes.
 - Foundation models (DA3/VGGT) require `foundation_models.py`.
