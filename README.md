@@ -63,7 +63,7 @@ VGGT:
 python compare.py \
   --scannet_root /path/to/scannet \
   --save_json /path/to/save \
-  --train_split_file /path/to/scannetv2_val.txt \
+  --split_file /path/to/scannetv2_val.txt \
   --model vggt
 ```
 DA3:
@@ -71,7 +71,7 @@ DA3:
 python compare.py \
   --scannet_root /path/to/scannet \
   --save_json /path/to/save \
-  --train_split_file /path/to/scannetv2_val.txt \
+  --split_file /path/to/scannetv2_val.txt \
   --model da3 \
   --da3_model_type DA3NESTED-GIANT-LARGE
 ```
