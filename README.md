@@ -45,17 +45,45 @@ pip install torch torchvision numpy matplotlib opencv-python scipy
 ```bash
 python train.py \
   --scannet_root /path/to/scannet \
-  --epochs 32 \
-  --batch_size 16 \
-  --image_size 240 320
+  --output_dir /path/to/save \
+  --train_split_file /path/to/scannetv2_train.txt
 ```
 
-### 5.3 Inference & Visualization 🎨
+### 5.3 Model Evalusation 🎀
+Baseline:
+```bash
+python test.py \
+  --scannet_root /path/to/scannet \
+  --save_json /path/to/save \
+  --split_file /path/to/scannetv2_val.txt \
+  --checkpoint ./trained_models/best.pth 
+```
+VGGT:
+```bash
+python compare.py \
+  --scannet_root /path/to/scannet \
+  --save_json /path/to/save \
+  --train_split_file /path/to/scannetv2_val.txt \
+   --model vggt
+```
+DA3:
+```bash
+python compare.py \
+  --scannet_root /path/to/scannet \
+  --save_json /path/to/save \
+  --train_split_file /path/to/scannetv2_val.txt \
+  --model da3 \
+  --da3_model_type DA3NESTED-GIANT-LARGE
+```
+
+
+### 5.4 Inference & Visualization 🎨
 ```bash
 python visualize.py \
   --scannet_root /path/to/scannet \
   --checkpoint ./trained_models/best.pth \
-  --scene_name scene0001_01
+  --scene_name scene0001_01 \
+  --save_path depth_qualitative_visualization_1.png
 ```
 
 ## 6. Evaluation Metric 📐
