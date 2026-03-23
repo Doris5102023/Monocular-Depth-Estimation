@@ -33,7 +33,7 @@ Monocular depth estimation is an ill-posed computer vision task: a single 2D ima
 
 ### Depth Anything 3 (DA3)
 - Paper: [Depth Anything 3: Recovering the Visual Space from Any Views](https://arxiv.org/abs/2511.10647)
-- Model Zoo: [Depth Anything 3: Recovering the Visual Space from Any Views](https://github.com/ByteDance-Seed/depth-anything-3)
+- Model Zoo: [https://github.com/ByteDance-Seed/depth-anything-3](https://github.com/ByteDance-Seed/depth-anything-3)
 
 ## 5. Usage 🚀
 ### 5.1 Environment Setup
