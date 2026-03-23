@@ -75,10 +75,10 @@ python compare.py \
   --model da3 \
   --da3_model_type DA3NESTED-GIANT-LARGE
 ```
-[Beseline vusualizetion result](https://github.com/Doris5102023/Monocular-Depth-Estimation/blob/main/depth_qualitative_visualization_1.png)
+[Beseline visualization result](https://github.com/Doris5102023/Monocular-Depth-Estimation/blob/main/depth_qualitative_visualization_1.png)
 
 
-[Comparison vusualizetion result](https://github.com/Doris5102023/Monocular-Depth-Estimation/blob/main/depth_comparison_baseline_da3_vggt_0050.png)
+[Comparison visualization result](https://github.com/Doris5102023/Monocular-Depth-Estimation/blob/main/depth_comparison_baseline_da3_vggt_0050.png)
 
 ### 5.4 Inference & Visualization 🎨
 ```bash
