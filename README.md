@@ -1,6 +1,6 @@
 # README: Monocular Depth Estimation
 ## 1. Overview 🧠
-This repository implements **monocular depth estimation** for Task 3, which predicts dense depth maps from single RGB images using deep learning. Built on PyTorch and evaluated on the ScanNet dataset, it supports:
+This repository implements **monocular depth estimation** , which predicts dense depth maps from single RGB images using deep learning. Built on PyTorch and evaluated on the [ScanNet dataset](https://github.com/ScanNet/ScanNet), it supports:
 - Training a custom ResNet50 baseline model
 - Inference & quantitative evaluation (AbsRel metric)
 - Qualitative visualization of depth predictions
