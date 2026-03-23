@@ -21,7 +21,7 @@ Monocular depth estimation is an ill-posed computer vision task: a single 2D ima
 | `metrics.py`            | AbsRel metric + scale-shift alignment functions.                           |
 | `train.py`              | Training pipeline (loss computation / optimizer / checkpoint saving).       |
 | `test.py`               | Test-time evaluation (AbsRel calculation on test set).                     |
-| `infer.py`              | Single-image depth prediction.                                              |
+| `compare.py`              | Evaluate Baseline / VGGT / DA3 on ScanNet Test Set.                                              |
 | `visualize.py`          | Baseline model visualization (RGB → GT → Pred → Error).                    |
 | `visualize_compare.py`  | Side-by-side comparison (Baseline/VGGT/DA3).                                |
 | `foundation_models.py`  | Wrapper for VGGT/DA3 inference. 
