@@ -64,7 +64,7 @@ python compare.py \
   --scannet_root /path/to/scannet \
   --save_json /path/to/save \
   --train_split_file /path/to/scannetv2_val.txt \
-   --model vggt
+  --model vggt
 ```
 DA3:
 ```bash
