@@ -50,7 +50,7 @@ python train.py \
 ```
 
 ### 5.3 Model Evalusation 🎀
-Baseline:
+Baseline:([result](https://github.com/Doris5102023/Monocular-Depth-Estimation/blob/main/depth_qualitative_visualization_1.png))
 ```bash
 python test.py \
   --scannet_root /path/to/scannet \
